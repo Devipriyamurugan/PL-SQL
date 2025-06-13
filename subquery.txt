@@ -1,0 +1,12 @@
+5.select fname ,Lname ,empid , sal from employee where managerid =(select empid from employee where name =payam);
+6.select dept no , fname ,lname , jobid ,dept name from employee join departments on employee.deptid=department.deptid where department.name ='finance';
+7.select * from employee where sal =3000 and managerid=121;
+10.select * from employee where deptid not in (select deptid from department where managerid between 100 and 200);
+13.select fname , lname , hiredate from employee where deptid=(select deptid from employee whose fname=clara) and fname<> clara;
+14.select empno , fname ,lname ,sal where sal> (select avg(sal) from employee) and deptid in(select deptid from employee where fname like '%j');
+17.select empid ,fname ,lname , jobud from employee where sal <any (select sal from employee where jobid='mk_man');
+20.select empid ,fname,lname,jobid from employee where sal> any (select avg(sal) from employee group by department);
+21.select fname,lname ,deptid from employee where exists(select * from employee where sal>3700);
+22.select deptid,sum(sal) from employee where deptid in (select deptid from department) group by deptid having count(deptid)>=1;
+26.select deptname from departments where deptid in(select distinct deptid from employee);
+32.select * from employee where empid in (select managerid from departments);

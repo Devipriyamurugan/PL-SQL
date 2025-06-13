@@ -1,0 +1,13 @@
+CREATE OR REPLACE FUNCTION get_product
+(
+    num1 IN NUMBER,
+    num2 IN NUMBER
+)
+RETURN NUMBER
+IS
+    result NUMBER;
+BEGIN
+    result := num1 * num2;
+    RETURN result;
+END;
+/

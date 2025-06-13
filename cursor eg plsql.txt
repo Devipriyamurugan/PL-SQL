@@ -1,0 +1,31 @@
+CREATE OR REPLACE PROCEDURE prcCursorShow 
+AS
+BEGIN
+   DECLARE 
+      CURSOR cursor_book IS 
+         SELECT bookid, book_name, price, category,author 
+         FROM Book where category ='IT';
+ 
+      v_bookid     number  
+      v_name      Book.book_name%TYPE;
+      v_price    Book.price%TYPE;
+      v_category      Book.category_type%TYPE;
+      v_author   Book.auth_type%TYPE;
+      cnt         NUMBER;
+ 
+   BEGIN
+      OPEN cursor_book;
+      LOOP
+         FETCH cursor_book INTO v_bookid, v_name, v_branch, v_category,v_author;
+         EXIT WHEN cursor_book%ROWCOUNT = cnt;
+         DBMS_OUTPUT.PUT_LINE('--------------------------------');
+         DBMS_OUTPUT.PUT_LINE('Book Id     : ' || v_bookid);
+         DBMS_OUTPUT.PUT_LINE('Book Name  : ' || v_name);
+         DBMS_OUTPUT.PUT_LINE('price        : ' || v_price);
+         DBMS_OUTPUT.PUT_LINE('Book Category   : ' || v_category);
+         DBMS_OUTPUT.PUT_LINE('Book Author  : ' || v_author);
+         DBMS_OUTPUT.PUT_LINE('--------------------------------');
+      END LOOP;
+      CLOSE cursor_book;
+   END;
+END;

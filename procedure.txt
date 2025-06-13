@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE greet_user (
+    p_name IN VARCHAR2
+)
+AS
+BEGIN
+    greet_user('John');
+END;
